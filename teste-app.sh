@@ -3,7 +3,7 @@ wget -q localhost:8090
 if [ $? -eq 0 ] 
 then
     echo "Redis app is running successfully."
-elif [[ $RESULT == *"Number"*]]
+elif [ $RESULT == *"Number"* ]
 then
     echo "ok - number of visists"
     echo $RESULT
