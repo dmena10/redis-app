@@ -11,7 +11,7 @@ pipeline {
             sh 'docker-compose up --build -d'
             }
         }
-        stage('sllep subida de containers'){
+        stage('sleep subida de containers'){
             steps{
             sh 'sleep 10'
             }
