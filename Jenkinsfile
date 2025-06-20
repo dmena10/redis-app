@@ -1,6 +1,7 @@
 pipeline {
     agent any
-    stage('Build da imagem docker')
+    stages{
+         stage('Build da imagem docker')
         steps{
             sh 'docker build -t redis-app .'
         }
@@ -19,5 +20,8 @@ pipeline {
         }
 
     }
+
+    }
+   
 }
 
