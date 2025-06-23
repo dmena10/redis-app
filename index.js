@@ -1,25 +1,23 @@
-const express = require('express');
-const redis = require('redis');
+const express = require('express')
+const redis = require('redis')
 
-const app =  express();
+const app = express()
 app.disable("x-powered-by");
-const client = redis.createClient({host: 'redis-server',
-    port: 6379});
+const client = redis.createClient({
+    host: 'redis-server',
+    port: 6379
+})
 
+client.set('visits',0);
 
-client.set('vissits', 0);
+app.get('/', (req, res)=>{
+    client.get('visits', (err, visits)=>{
+        visits = parseInt(visits) + 1
+        res.send('Number of visits is:' + visits)
+        client.set('visits', parseInt(visits))
+    })
+})
 
-app.get('/', (req, res) => {
-  client.get('vissits', (err, visits) => {
-    if (err) {
-      console.error('Error retrieving visits:', err);
-      return res.status(500).send('Internal Server Error');
-    }
-    visits = parseInt(visits, 10) + 1;
-    client.set('vissits', visits);
-    res.send(`Number of visits: ${visits}`);
-  });
-});
-app.listen(3000, () => {
-  console.log('Server is running on port 3000');
-});
+app.listen(8081, ()=>{
+    console.log('Serviço na porta 8081')
+})
