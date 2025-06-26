@@ -47,7 +47,7 @@ pipeline {
             steps{
                 script{
                     withCredentials([usernamePassword(credentialsId: 'nexus-user', usernameVariable: 'USERNAME', passwordVariable: 'PASSWORD' )]){
-                        sh 'docker login --username $USERNAME ${NEXUS_URL}'
+                        sh 'docker login --username=jenkins --password=jenkins ${NEXUS_URL}'
                         sh 'docker tag devops/app:latest localhost:8082/devops/app'
                         sh 'docker push localhost:8082/devops/app'
                     }
