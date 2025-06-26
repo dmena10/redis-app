@@ -48,8 +48,8 @@ pipeline {
                 script{
                     withCredentials([usernamePassword(credentialsId: 'nexus-user', usernameVariable: 'USERNAME', passwordVariable: 'PASSWORD' )]){
                         sh 'docker login -u $USERNAME -p $PASSWORD ${NEXUS_URL}'
-                        sh 'docker tag devops/app:latest localhost/devops/app'
-                        sh 'docker push localhost/devops/app'
+                        sh 'docker tag devops/app:latest localhost:8082/devops/app'
+                        sh 'docker push localhost:8082/devops/app'
                     }
                 }
             }
