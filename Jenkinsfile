@@ -54,6 +54,12 @@ pipeline {
                 }
             }
         }
+        stage('Apply kubernete files'){
+            steps{
+                sh '/usr/local/bin/kubectl apply -f k8s/redis.yaml'
+                sh '/usr/local/bin/kubectl apply -f k8s/redis-app.yaml'
+            }
+        }
        
 
     }
