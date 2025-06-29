@@ -8,7 +8,7 @@ pipeline {
         }
         stage('subir docker compose - redis e app'){
             steps {
-                sh 'docker-compose up --build -d'
+                sh 'docker compose up --build -d'
             }
         }
         stage('sleep para subida de containers'){
@@ -39,7 +39,7 @@ pipeline {
         }
         stage('shutdown dos containers de teste'){
             steps{
-                sh 'docker-compose down'
+                sh 'docker compose down'
                 
             }
         }
