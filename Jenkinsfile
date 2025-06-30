@@ -56,8 +56,8 @@ pipeline {
         }
         stage('Apply kubernete files'){
             steps{
-                sh '/usr/local/bin/kubectl apply -f k3s/redis.yaml'
-                sh '/usr/local/bin/kubectl apply -f k3s/redis-app.yaml'
+                sh '/usr/local/bin/kubectl apply -f k3s/redis.yaml --validate=false'
+                sh '/usr/local/bin/kubectl apply -f k3s/redis-app.yam --validate=false'
             }
         }
        
